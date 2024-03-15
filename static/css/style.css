@@ -1,0 +1,27 @@
+:root{
+ --primary-color:#d2c9ff;
+ --secondary-color:#f9f9f9;
+ --dark-color:black;
+}
+body{
+    background-color: var(--primary-color);
+}
+.landing{
+    height: 90vh;
+}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
