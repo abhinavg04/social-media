@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+  <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-3 border-right col-lg-4">
+        <div class="d-flex flex-column align-items-center text-center py-5">
+          {% if userinfo.profileimg %}
+          <img class="rounded-circle mt-5 img-fluid" src="{{userinfo.profileimg.url}}" style="width: 300px;"/>
+          {% else %}
+          <img class="rounded-circle mt-5 img-fluid" src="{% static 'images/demoavatar.png' %}" />
+          {% endif %}
+          <span class="font-weight-bold">{{user.first_name}}</span>
+          <span class="text-black-50">{{user.email}}</span><span></span>
+        </div>
+      </div> 
+      <div class="col-md-5 border-right col-lg-7">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Profile Settings</h4>
+          </div> <div class="row mt-2">
+            <div class="col-md-6">
+              <label class="labels">First Name</label><input type="text" class="form-control" placeholder="first name" value="{{user.first_name}}" />
+            </div> <div class="col-md-6">
+              <label class="labels">Last Name</label><input type="text" class="form-control" value="{{user.last_name}}" placeholder="last name" />
+            </div>
+          </div>
+          
+          <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-primary" type="submit">Save Profile</button>
+          </form>
+
+        </div>
+      </div> 
+  </div>
+{% endblock %}
